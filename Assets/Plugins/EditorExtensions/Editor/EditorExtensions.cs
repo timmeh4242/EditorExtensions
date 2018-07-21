@@ -128,7 +128,7 @@ public static class EditorExtensions
         else if (type == typeof(IntReactiveProperty))
         {
             var reactiveProperty = value as IntReactiveProperty;
-            reactiveProperty.Value = DrawBool(rect, reactiveProperty.Value, memberName, index);
+            reactiveProperty.Value = DrawInt(rect, reactiveProperty.Value, memberName, index);
         }
         else if (type == typeof(FloatReactiveProperty))
         {
@@ -181,58 +181,49 @@ public static class EditorExtensions
 		return true;
 	}
 
-    private static object DrawRect(Rect rect, object value, string memberName, int index)
+    private static int DrawInt(Rect rect, object value, string memberName, int index)
     {
-        value = EditorGUI.RectField(new Rect(rect.x, rect.y + (index * lineHeight) + (index * lineSpacing), rect.width, lineHeight), memberName, (Rect)value);
-        return value;
+        return EditorGUI.IntField(new Rect(rect.x, rect.y + (index * lineHeight) + (index * lineSpacing), rect.width, lineHeight), memberName, (int)value);
     }
 
-    private static object DrawBounds(Rect rect, object value, string memberName, int index)
+    private static float DrawFloat(Rect rect, object value, string memberName, int index)
     {
-        value = EditorGUI.BoundsField(new Rect(rect.x, rect.y + (index * lineHeight) + (index * lineSpacing), rect.width, lineHeight), memberName, (Bounds)value);
-        return value;
+        return EditorGUI.FloatField(new Rect(rect.x, rect.y + (index * lineHeight) + (index * lineSpacing), rect.width, lineHeight), memberName, (float)value);
     }
 
-    private static object DrawColor(Rect rect, object value, string memberName, int index)
+    private static bool DrawBool(Rect rect, object value, string memberName, int index)
     {
-        value = EditorGUI.ColorField(new Rect(rect.x, rect.y + (index * lineHeight) + (index * lineSpacing), rect.width, lineHeight), memberName, (Color)value);
-        return value;
+        return EditorGUI.Toggle(new Rect(rect.x, rect.y + (index * lineHeight) + (index * lineSpacing), rect.width, lineHeight), memberName, (bool)value);
     }
 
-    private static object DrawVector3(Rect rect, object value, string memberName, int index)
+    private static string DrawString(Rect rect, object value, string memberName, int index)
     {
-        value = EditorGUI.Vector3Field(new Rect(rect.x, rect.y + (index * lineHeight) + (index * lineSpacing), rect.width, lineHeight), memberName, (Vector3)value);
-        return value;
+        return EditorGUI.TextField(new Rect(rect.x, rect.y + (index * lineHeight) + (index * lineSpacing), rect.width, lineHeight), memberName, (string)value);
     }
 
-    private static object DrawVector2(Rect rect, object value, string memberName, int index)
+    private static Vector2 DrawVector2(Rect rect, object value, string memberName, int index)
     {
-        value = EditorGUI.Vector2Field(new Rect(rect.x, rect.y + (index * lineHeight) + (index * lineSpacing), rect.width, lineHeight), memberName, (Vector2)value);
-        return value;
+        return EditorGUI.Vector2Field(new Rect(rect.x, rect.y + (index * lineHeight) + (index * lineSpacing), rect.width, lineHeight), memberName, (Vector2)value);
     }
 
-    private static object DrawInt(Rect rect, object value, string memberName, int index)
+    private static Vector3 DrawVector3(Rect rect, object value, string memberName, int index)
     {
-        value = EditorGUI.IntField(new Rect(rect.x, rect.y + (index * lineHeight) + (index * lineSpacing), rect.width, lineHeight), memberName, (int)value);
-        return value;
+        return EditorGUI.Vector3Field(new Rect(rect.x, rect.y + (index * lineHeight) + (index * lineSpacing), rect.width, lineHeight), memberName, (Vector3)value);
     }
 
-    private static object DrawFloat(Rect rect, object value, string memberName, int index)
+    private static Color DrawColor(Rect rect, object value, string memberName, int index)
     {
-        value = EditorGUI.FloatField(new Rect(rect.x, rect.y + (index * lineHeight) + (index * lineSpacing), rect.width, lineHeight), memberName, (float)value);
-        return value;
+        return EditorGUI.ColorField(new Rect(rect.x, rect.y + (index * lineHeight) + (index * lineSpacing), rect.width, lineHeight), memberName, (Color)value);
     }
 
-    private static object DrawBool(Rect rect, object value, string memberName, int index)
+    private static Bounds DrawBounds(Rect rect, object value, string memberName, int index)
     {
-        value = EditorGUI.Toggle(new Rect(rect.x, rect.y + (index * lineHeight) + (index * lineSpacing), rect.width, lineHeight), memberName, (bool)value);
-        return value;
+        return EditorGUI.BoundsField(new Rect(rect.x, rect.y + (index * lineHeight) + (index * lineSpacing), rect.width, lineHeight), memberName, (Bounds)value);
     }
 
-    private static object DrawString(Rect rect, object value, string memberName, int index)
+    private static Rect DrawRect(Rect rect, object value, string memberName, int index)
     {
-        value = EditorGUI.TextField(new Rect(rect.x, rect.y + (index * lineHeight) + (index * lineSpacing), rect.width, lineHeight), memberName, (string)value);
-        return value;
+        return EditorGUI.RectField(new Rect(rect.x, rect.y + (index * lineHeight) + (index * lineSpacing), rect.width, lineHeight), memberName, (Rect)value);
     }
 
     public static void SetHideFlags(this Editor editor, PrefabType prefabType)
